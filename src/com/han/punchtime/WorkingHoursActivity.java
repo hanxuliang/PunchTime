@@ -1,6 +1,7 @@
 package com.han.punchtime;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,16 +15,8 @@ public class WorkingHoursActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_working_hours);
-        TimePicker workingPicker = (TimePicker)findViewById(R.id.workingPicker);
-        workingPicker.setIs24HourView(false);
-        workingPicker.setCurrentHour(8);
-        workingPicker.setOnTimeChangedListener(new OnTimeChangedListener() {
-			
-			public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+        FragmentManager fm = getFragmentManager();
+        fm.beginTransaction().add(, );
     }
 
 

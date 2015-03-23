@@ -8,16 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.han.punchtime.WorkingHoursActivity" >
 
-    <TimePicker
-        android:id="@+id/workingPicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentTop="false"
-        android:layout_centerHorizontal="false"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="false"
-        android:layout_marginLeft="82dp"
-        android:layout_marginTop="168dp" />
+
 
 </RelativeLayout>
