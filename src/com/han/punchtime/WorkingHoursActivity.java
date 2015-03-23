@@ -5,8 +5,6 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TimePicker;
-import android.widget.TimePicker.OnTimeChangedListener;
 
 
 public class WorkingHoursActivity extends Activity {
@@ -15,8 +13,10 @@ public class WorkingHoursActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_working_hours);
+        
+        SelectWorkingTimeFragment startFragment =  new SelectWorkingTimeFragment();
         FragmentManager fm = getFragmentManager();
-        fm.beginTransaction().add(, );
+        fm.beginTransaction().add(R.id.fragmentContainer, startFragment).commit();
     }
 
 

@@ -15,4 +15,14 @@
         android:layout_marginLeft="82dp"
         android:layout_marginTop="168dp" />
 
+     <Button
+         android:id="@+id/select_working_time"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentRight="true"
+         android:layout_marginBottom="14dp"
+         android:layout_marginRight="19dp"
+         android:text="@string/next" />
+
 </RelativeLayout>
