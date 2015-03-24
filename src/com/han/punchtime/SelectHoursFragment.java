@@ -1,7 +1,6 @@
 package com.han.punchtime;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +22,7 @@ public class SelectHoursFragment extends Fragment {
 		numberPicker.setMaxValue(12);
 		numberPicker.setValue(8);
 		
-		Button nextButton = (Button)view.findViewById(R.id.select_working_time);
+		Button nextButton = (Button)view.findViewById(R.id.select_hours);
         nextButton.setOnClickListener(new OnClickListener() {
 			
 			@Override

@@ -1,7 +1,6 @@
 package com.han.punchtime;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,11 @@ import android.widget.TimePicker;
 import android.widget.TimePicker.OnTimeChangedListener;
 
 public class SelectWorkingTimeFragment extends Fragment {
-
+	
+//	ButtonPressListener buttonPress;
+//	public interface ButtonPressListener {
+//		public void press();
+//	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -35,10 +38,10 @@ public class SelectWorkingTimeFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				SelectHoursFragment hoursFragment = new SelectHoursFragment();
-				getActivity().getFragmentManager().beginTransaction().add(R.id.fragmentContainer, hoursFragment).commit();
+				getFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new SelectHoursFragment()).commit();
 			}
 		});
         return view;
 	}
+	
 }
