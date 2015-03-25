@@ -7,21 +7,35 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.TextView;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TimePicker;
 import android.widget.TimePicker.OnTimeChangedListener;
 
 public class SelectWorkingTimeFragment extends Fragment {
 	
-//	ButtonPressListener buttonPress;
-//	public interface ButtonPressListener {
-//		public void press();
-//	}
+	TimePicker workingPicker;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.fragment_working_time, container, false);
-		TimePicker workingPicker = (TimePicker)view.findViewById(R.id.workingPicker);
+		
+		CheckBox freeCheckBox = (CheckBox) view.findViewById(R.id.checkBox_free);
+		freeCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				// TODO Auto-generated method stub
+				workingPicker.setVisibility(View.INVISIBLE);
+			}
+		});
+		
+		TextView textView = (TextView) view.findViewById(R.id.textView1);
+		
+		workingPicker = (TimePicker)view.findViewById(R.id.workingPicker);
         workingPicker.setIs24HourView(false);
         workingPicker.setCurrentHour(8);
         workingPicker.setOnTimeChangedListener(new OnTimeChangedListener() {
