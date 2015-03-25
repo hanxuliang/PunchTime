@@ -17,6 +17,7 @@ import android.widget.TimePicker.OnTimeChangedListener;
 public class SelectWorkingTimeFragment extends Fragment {
 	
 	TimePicker workingPicker;
+	TextView titleView;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -29,11 +30,19 @@ public class SelectWorkingTimeFragment extends Fragment {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				// TODO Auto-generated method stub
-				workingPicker.setVisibility(View.INVISIBLE);
+				if (isChecked) {
+					workingPicker.setVisibility(View.INVISIBLE);
+					titleView.setVisibility(View.INVISIBLE);
+				}else {
+					workingPicker.setVisibility(View.VISIBLE);
+					titleView.setVisibility(View.VISIBLE);
+				}
+				
 			}
 		});
 		
-		TextView textView = (TextView) view.findViewById(R.id.textView1);
+		titleView = (TextView) view.findViewById(R.id.textView_select_time);
+		
 		
 		workingPicker = (TimePicker)view.findViewById(R.id.workingPicker);
         workingPicker.setIs24HourView(false);
