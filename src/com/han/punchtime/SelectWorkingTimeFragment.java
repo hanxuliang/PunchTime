@@ -1,7 +1,10 @@
 package com.han.punchtime;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +21,7 @@ public class SelectWorkingTimeFragment extends Fragment {
 	
 	TimePicker workingPicker;
 	TextView titleView;
+	Boolean isFree;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -31,13 +35,13 @@ public class SelectWorkingTimeFragment extends Fragment {
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				// TODO Auto-generated method stub
 				if (isChecked) {
+					isFree = true;
 					workingPicker.setVisibility(View.INVISIBLE);
 					titleView.setVisibility(View.INVISIBLE);
 				}else {
 					workingPicker.setVisibility(View.VISIBLE);
 					titleView.setVisibility(View.VISIBLE);
 				}
-				
 			}
 		});
 		
@@ -62,6 +66,12 @@ public class SelectWorkingTimeFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				getFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new SelectHoursFragment()).commit();
+				//±£´æÊý¾Ý
+				SharedPreferences sp = (SharedPreferences) getActivity().getPreferences(Context.MODE_PRIVATE);
+				sp.edit().putBoolean("FreeTime", isFree);
+				if (!isFree) {
+					
+				}
 			}
 		});
         return view;

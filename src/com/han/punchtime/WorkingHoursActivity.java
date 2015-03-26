@@ -1,5 +1,8 @@
 package com.han.punchtime;
 
+import java.io.File;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -14,9 +17,21 @@ public class WorkingHoursActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_working_hours);
         
-        SelectWorkingTimeFragment startFragment =  new SelectWorkingTimeFragment();
-        FragmentManager fm = getFragmentManager();
-        fm.beginTransaction().add(R.id.fragmentContainer, startFragment).commit();
+        File firstFile = new File(getFilesDir(), "first");
+        if (firstFile.exists()) {
+			getFragmentManager().beginTransaction().add(R.id.fragmentContainer, new StartTimeFragment()).commit();
+		}else {
+			SelectWorkingTimeFragment startFragment =  new SelectWorkingTimeFragment();
+	        FragmentManager fm = getFragmentManager();
+	        fm.beginTransaction().add(R.id.fragmentContainer, startFragment).commit();
+	        //创建文件
+	        try {
+				firstFile.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				System.out.println("创建失败");
+			}
+		}
     }
 
 
