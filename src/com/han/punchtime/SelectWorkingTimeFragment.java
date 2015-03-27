@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.TextView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.TimePicker.OnTimeChangedListener;
 
@@ -49,7 +48,7 @@ public class SelectWorkingTimeFragment extends Fragment {
 		
 		
 		workingPicker = (TimePicker)view.findViewById(R.id.workingPicker);
-        workingPicker.setIs24HourView(false);
+        workingPicker.setIs24HourView(true);
         workingPicker.setCurrentHour(8);
         workingPicker.setOnTimeChangedListener(new OnTimeChangedListener() {
 			
@@ -65,13 +64,14 @@ public class SelectWorkingTimeFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				getFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new SelectHoursFragment()).commit();
 				//±£´æÊý¾Ý
 				SharedPreferences sp = (SharedPreferences) getActivity().getPreferences(Context.MODE_PRIVATE);
-				sp.edit().putBoolean("FreeTime", isFree);
+				sp.edit().putBoolean("StartFree", isFree);
 				if (!isFree) {
-					
+					sp.edit().putInt("StartHour", workingPicker.getCurrentHour());
+					sp.edit().putInt("StartMinute", workingPicker.getCurrentMinute());
 				}
+				getFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new SelectHoursFragment()).commit();
 			}
 		});
         return view;
