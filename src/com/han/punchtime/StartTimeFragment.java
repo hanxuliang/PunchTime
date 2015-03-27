@@ -3,6 +3,7 @@ package com.han.punchtime;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import android.R.bool;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -34,9 +35,12 @@ public class StartTimeFragment extends Fragment implements OnClickListener {
 		String string = sf.format(date);
 		String[] array = string.split(":");
 		SharedPreferences sp = getActivity().getPreferences(Context.MODE_PRIVATE);
-		sp.edit().putInt("StartHour", Integer.valueOf(array[0]));
-		sp.edit().putInt("StartMinute", Integer.valueOf(array[1]));
-		sp.edit().putInt("StartSecond", Integer.valueOf(array[2]));
+		boolean isFree = sp.getBoolean("StartFree", false);
+		if (isFree) {
+			sp.edit().putInt("StartHour", Integer.valueOf(array[0]));
+			sp.edit().putInt("StartMinute", Integer.valueOf(array[1]));
+			sp.edit().putInt("StartSecond", Integer.valueOf(array[2]));
+		}
 		getFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new TimeStatisticianFragment()).commit();
 	}
 }
